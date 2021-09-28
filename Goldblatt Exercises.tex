@@ -1,0 +1,109 @@
+\documentclass{asl}
+
+
+
+
+
+\title{Goldblatt Exercises}
+
+\author{Chris Scambler}
+\revauthor{C. Scambler}
+\address{All Souls College\\
+University of Oxford}
+\email{cscambler@gmail.com}
+ \usepackage{stmaryrd}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+% These will be typeset in italics
+\newtheorem{Theorem}{Theorem}[section]
+\newtheorem{Proposition}[Theorem]{Proposition}
+\newtheorem{Lemma}[Theorem]{Lemma}
+\newtheorem{Corollary}[Theorem]{Corollary}
+\newtheorem{Exercise}[Theorem]{Exercise}
+\usepackage{times}
+% These will be typeset in Roman
+\theoremstyle{definition}
+\newtheorem{Definition}[Theorem]{Definition}
+\newtheorem{Fact}[Theorem]{Fact}
+\newtheorem{Conjecture}[Theorem]{Conjecture}
+\newtheorem{Remark}[Theorem]{Remark}
+
+
+
+\begin{document} 
+\maketitle
+
+\begin{Exercise}[1, p223]
+Show that the $p$th component of the transformation
+\[[\langle \top, 1_\Omega \rangle, \langle 1_\Omega, \top \rangle]\]
+is ``essentially'' the set 
+\[\{\langle [p), S \rangle : S \in \Omega_p\} \cup \{\langle S, [p) \rangle : S \in \Omega_p \}\]
+and hence that the disjunction arrow $\cup : \Omega \times \Omega \to \Omega$ has components 
+\[\cup_p(\langle S, T \rangle) = S \cup T\]
+\end{Exercise}
+\begin{proof}
+We begin by observing that
+\[(\Omega + \Omega)_p = \Omega_p + \Omega_p\]
+\[(\Omega+\Omega)_{pq} = [\Omega_{pq}, \Omega_{pq}]\]
+which can be proven by appeal to universal property of coproduct.\footnote{Suppose you have a pair of arrows $f, g$ from $\Omega$ to $X$. Then at each $\Omega_p$ the universal property of coproduct determines unique $[f_p, g_p]$ from $\Omega_p + \Omega_p$ to $X_p$. The action of $[\Omega_{pq}, \Omega_{pq}]$, together with the assumption that $f$ and $g$ are natural transformations, guarantees that $[f, g]$ is a natural transformation. This establishes the universal property of coproduct for the above functor.}
+
+Now at each $p$ we get a diagram
+$$\begin{tikzcd}[column sep = large] 
+\Omega_p \arrow[r,"i"] \arrow[rd, "{\langle \top, 1_\Omega \rangle_p}" description]  & \Omega_p + \Omega_p \arrow[d,"cpa" description] & \Omega_p \arrow[l,"i"] \arrow[ld, "{\langle 1_\Omega , \top  \rangle_p}" description]\\
+&\Omega_p \times \Omega_p&
+\end{tikzcd}$$
+Where $cpa$ is the relevant coordinate of the transformation. The action of $\langle \top, 1_\omega \rangle_p$ is
+\[ \langle \top, 1_\omega \rangle_p(S) = \langle [p), S \rangle\]
+and similarly for the other coordinate. Hence, at each $p$, the image of the relevant coordinate in $\Omega_p \times \Omega_p$ is precisely 
+\[X_p := \{\langle [p), S \rangle : S \in \Omega_p\} \cup \{\langle S, [p) \rangle : S \in \Omega_p \}\]
+Now, $\cup$ must be the character of this image. Thus, at each $p$,
+\[\cup_p(\langle S, T \rangle) = \{q : \langle \Omega_{pq}(S), \Omega_{pq}(T) \rangle \in X_q\}\]
+\[= \{q : \langle [q) \cap S, [q) \cap T \rangle \in X_q\} \]
+\[ = \{q : [q) \cap S = [q) \text{ or } [q) \cap T = [q)\} \]
+\[ = \{q : q \in S \text{ or } q \in T\} \]
+\[ = S \cup T \]
+
+\end{proof}
+
+\subsection{Quantifiers as Adjoints}
+The exponential in a topos is an object $B^A$ together with an arrow $ev : B^A \times A \to B$. $B^A$ enjoys the following universal property. Given any arrow $g : C \times A \to B$, there is a unique arrow $\hat g : C \to B^A$ with the property that
+
+$$\begin{tikzcd}[column sep = large] 
+B^A \times A \arrow[rd, "ev" ]  & \\
+&B&\\
+C \times A \arrow[uu, "{\hat g \times id}", dashed] \arrow[ru, "g"]
+\end{tikzcd}$$
+commutes. $\hat g$ is the \emph{exponential adjoint} of $g$. Note that $g$ is a function from something times $A$, and $\hat g$ is a function from something not (necessarily) involving $A$ \emph{into} functions from $B$ to $A$. Intuitively, $\hat g$ encodes all the $A$ related stuff in $g$ in its codomain, in the function it picks.
+
+In our category theoretic semantics we are going to think of a formula $\varphi$ as determining an arrow $\llbracket \varphi \rrbracket^m : A^m \to 2$, where $A$ is the domain of our model and $m$ is some integer $>$ the largest index of a variable in $\varphi$. Effectively $\llbracket \varphi \rrbracket^m$ picks the partial assignments of length $m$ that satisfy $\varphi$.
+
+In case $\varphi$ is of the form $\forall v_i \psi v_i$, we ultimately want $\llbracket \varphi \rrbracket^m(\langle a_1,...,a_m \rangle) = 1$ iff $\{x : \psi[ a_1,...,a_{i-1}, x, a_{i+1},...,a_m ] \} = A$. To describe this circumstance in arrows only terms, we break it up into two parts. First, for each $m$ and $i$ we give an arrow $|\psi|^m_i : A^m \to 2^A$ that picks out the set $\{x : \psi[ a_1,...,a_{i-1}, x, a_{i+1},...,a_m ] \}$; then we give an arrow that picks out the constant function on $1$, \emph{viz} the character of $A$, from among the characteristic functions of subsets of $A$. Composing the two arrows yields the desired result.
+
+Now the function $|\psi|^m_i : A^m \to 2^A$ will be the exponential adjoint of a function from $A^{m+1}$ to $2$. In effect this function tells you if the result of swapping the $m+1$th member of the tuple for the $i$th member of the tuple yields an $m$ tuple satisfying $\psi$. One simple way to emulate this function is therefore just to do $\llbracket \psi \rrbracket^m$ after swapping the $m+1$th component with the $i$th component of a given tuple. The product map $T^{m+1}_i := \langle pr_1, pr_2,..., pr_{i-1}, pr_{m+1}, pr_i, ... pr_m \rangle$ does exactly that. So we arrive at our first arrow, picking out $\{x : \psi[ a_1,...,a_{i-1}, x, a_{i+1},...,a_m ] \} $, in this case as the exponential adjoint of $\llbracket \psi \rrbracket^m \circ T^{m+1}_i$. 
+
+Now we just need the ability to say that this is universal (or dually, instantiated). That is, we need a map $F$ from $2^A$ to $2$ with the property that $F(f) = 1$ iff $f$ is constant on $1$. Here the idea is to pick $True_A$ as an element $x: 1 \to 2^A$. Since it is an element it is also a subobject and we then take its character. To get the element is easy: observe it is the exponential adjoint of the map $True_A \circ pr_A : 1 \times A \to 2$, since the resulting function has to map everything in $A$ onto $1$. But now this element has a character which we label $\forall_A$. 
+
+Finally, we may define $\llbracket \varphi \rrbracket^m$ in this case as $\forall_\alpha \circ |\psi|^m_i$.
+
+For existential quantification, we just need a way to pick out the non-empty subobjects. Here, we use the membership subjobject $\in_A$ as a subobject of $2^A \times A$, and project onto the first coordinate, we get what we need.
+
+Note the comparison with standard quantifier theory. Existential quantifier is a third order property....
+
+\begin{Exercise}[1,p250]
+$pr^m_i \circ \delta[i/v_j] = pr^m_j \circ \delta ^m[i/v_j] = pr^m_j$
+\end{Exercise}
+\begin{proof}
+The second identity is obvious because $\delta^m[i/v_j]$ doesn't do anything to the $j$th component: we just have $pr^m_j \circ \langle pr^m_0,...,pr^m_j,... pr^m_m \rangle$ which is clearly $pr^m_j$. On the other hand the first to last equality is equally obvious by the definition of the arrows involved: we put $\rho^m_t$, which in this case is $pr^m_j$, in the $j$th place of the relevant product arrow.
+\end{proof}
+\begin{Exercise}
+If $pr^m_i \circ f = pr^m_j \circ f$, then $\delta^m[i/v_j] \circ f = f$.
+\end{Exercise}
+\begin{proof}
+I suppose you want to show that $\delta^m[i/v_j] \circ f = id_{a^m} \circ f$ under these conditions, using the fact that $id_{a^m} = \langle pr^m_1,..., pr^m_m \rangle$ and universal property.
+\end{proof}
+\bibliography{masterbib}
+\bibliographystyle{asl}
+
+
+
+\end{document}
