@@ -1,7 +1,7 @@
 \documentclass{article}
 
 \usepackage[margin=1.5in]{geometry} 
-\usepackage{amsmath,amsthm,amssymb,hyperref}
+\usepackage{amsmath,amsthm,amssymb,hyperref, tikzcd}
 
 \newcommand{\R}{\mathbf{R}}  
 \newcommand{\Z}{\mathbf{Z}}
@@ -14,6 +14,8 @@
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{claim}[2][Claim]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
+\newenvironment{ex}[2][Exercise]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}} 
 \newenvironment{problem}[2][Problem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
 \newenvironment{proposition}[2][Proposition]{\begin{trivlist}
@@ -28,23 +30,36 @@
 \large 
 \linespread{1.5} 
 
-{\Large Topic 
+{\Large Topoi 
 \hfill  CJS}
 
-\begin{claim}{(Note)}
-Noise noise noise
-\end{claim}
-
-\begin{proof}
-By induction on jazz
-\end{proof}
-
-\begin{theorem}{(Note)}
-I rock
-\end{theorem}
-
-\begin{proof}
-Again, an induction on jazz.
-\end{proof}
+$$\begin{tikzcd}[column sep = large, row sep = large]
+    %zeroth row
+    \hat{1} \arrow[r, "e"]
+    & 
+    \Omega^1 \arrow[r, shift left, "h_a"] \arrow[r, shift right, "1" description]
+    &
+    \Omega^1   
+    \\
+    %first row 
+    %%first column
+    1 \arrow[r, "{\langle \{ \}_1, 1_1 \rangle}"] \arrow[d, "!"] \arrow[u, "\eta_1"]
+    & 
+    %%second column 
+    \Omega^1 \times 1 \arrow[d, "h"] \arrow[r, "h_a \times i"] \arrow[u, "pra"]
+    &
+    %%third column
+    \Omega^1 \times \Omega^1 \arrow[dl, "ev"]
+    \\
+    %second row
+    %%first column
+    1 \arrow[r, "True"]
+    & 
+    %%second column
+    \Omega 
+    &
+    %%third column
+        \\ 
+\end{tikzcd}$$
 
 \end{document}
