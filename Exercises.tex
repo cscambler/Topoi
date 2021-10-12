@@ -1,12 +1,14 @@
 \documentclass{article}
 
 \usepackage[margin=1.5in]{geometry} 
-\usepackage{amsmath,amsthm,amssymb,hyperref, tikzcd}
+\usepackage{amsmath,amsthm,amssymb,hyperref, tikzcd, stmaryrd}
 
-\newcommand{\R}{\mathbf{R}}  
+
 \newcommand{\Z}{\mathbf{Z}}
 \newcommand{\N}{\mathbf{N}}
 \newcommand{\Q}{\mathbf{Q}}
+\newcommand{\lb}{\llbracket}
+\newcommand{\rb}{\rrbracket}
 
 \newenvironment{theorem}[2][Theorem]{\begin{trivlist}
 \item[\hskip \labelsep {\bfseries #1}\hskip \labelsep {\bfseries #2.}]}{\end{trivlist}}
@@ -33,33 +35,60 @@
 {\Large Topoi 
 \hfill  CJS}
 
-$$\begin{tikzcd}[column sep = large, row sep = large]
-    %zeroth row
-    \hat{1} \arrow[r, "e"]
-    & 
-    \Omega^1 \arrow[r, shift left, "h_a"] \arrow[r, shift right, "1" description]
-    &
-    \Omega^1   
-    \\
-    %first row 
-    %%first column
-    1 \arrow[r, "{\langle \{ \}_1, 1_1 \rangle}"] \arrow[d, "!"] \arrow[u, "\eta_1"]
-    & 
-    %%second column 
-    \Omega^1 \times 1 \arrow[d, "h"] \arrow[r, "h_a \times i"] \arrow[u, "pra"]
-    &
-    %%third column
-    \Omega^1 \times \Omega^1 \arrow[dl, "ev"]
-    \\
-    %second row
-    %%first column
-    1 \arrow[r, "True"]
-    & 
-    %%second column
-    \Omega 
-    &
-    %%third column
-        \\ 
-\end{tikzcd}$$
+\begin{ex}[Monic arrows in $\Omega$-set]
+    . 
+    An arrow $f : A \to B$ in $\Omega$-set is monic iff it satisfies
+    \begin{equation}\label{hyp}
+        f(a_0, b) \wedge f(a_1, b) \leq \lb a_0 = a_1\rb_A
+    \end{equation}
+\end{ex}
+\begin{proof}
+    Let $g : C \to A$ in $\Omega$-set. 
+    
+    We first prove that (1) implies
+    \begin{equation}\label{eq}
+        g(c, a_0) = \bigsqcup_{b \in B} g\circ f(c, b)\wedge f(a_0, b)
+    \end{equation}
+    for any $c, a_0$. To do this we show eacch of 
+    \begin{equation}\label{leq}
+        g(c, a_0) \leq \bigsqcup_{b \in B} g\circ f(c, b)\wedge f(a_0, b)
+    \end{equation}
+    and 
+    \begin{equation}\label{geq}
+        g(c, a_0) \geq \bigsqcup_{b \in B} g\circ f(c, b)\wedge f(a_0, b)
+    \end{equation}
+    For \eqref{leq}, first observe
+    \begin{equation}\label{w}
+        g(c, a_0) \leq \lb a_0 = a_0 \rb \leq \bigsqcup_{b\in B} f(a_0, b)
+    \end{equation}
+    we can therefore chose $b \in B$ with 
+    \begin{equation}\label{wv}
+        g(c, a_0) \leq \lb a_0 = a_0 \rb \leq f(a_0, b)
+    \end{equation}
+    \eqref{wv} implies $g(c, a_0) \leq g(c, a_0) \wedge f(a_0, b)$
+    which in turn implies 
+    \begin{equation}
+        g(c, a_0) \leq (\bigsqcup_{a \in A} g(c, a) \wedge f(a, b)) \wedge f(a_0, b)
+    \end{equation}
+    from which \eqref{leq} follows trivially.
+
+    For \eqref{geq}, let $b \in B$. We have:
+    \begin{equation}\label{t1}
+        (\bigsqcup_{a \in A} g(c, a) \wedge f(a, b)) \wedge f(a_0, b) = \bigsqcup_{a \in A} g(c, a) \wedge f(a, b) \wedge f(a_0, b)
+    \end{equation}
+    \begin{equation}\label{t2}
+        \leq \bigsqcup_{a \in A} g(c, a) \wedge \lb a = a_0 \rb_A
+    \end{equation}
+    \begin{equation}\label{t3}
+        \leq g(c, a_0)
+    \end{equation}
+    where the transition from \eqref{t1} to \eqref{t2} uses \eqref{hyp},
+    and the transition from \eqref{t2} to \eqref{t3} uses (v) p 277.
+    (Is equality true?)
+
+    From here it is easy. Suppose $g\circ f(c, b) = h\circ f(c, b)$ for all
+    $c$ and $b$. Then for any $a$, $\bigsqcup_{b \in B} g\circ f(c, b) \wedge f(a, b) = \bigsqcup_{b \in B} h\circ f(c, b) \wedge f(a, b)$.
+    Hence $g(c, a) = f(c, a)$ by (2).
+\end{proof}
 
 \end{document}
