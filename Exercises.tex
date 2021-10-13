@@ -45,11 +45,11 @@
 \begin{proof}
     Let $g : C \to A$ in $\Omega$-set. 
     
-    We first prove that (1) implies
+    We first prove that \eqref{hyp} implies
     \begin{equation}\label{eq}
         g(c, a_0) = \bigsqcup_{b \in B} g\circ f(c, b)\wedge f(a_0, b)
     \end{equation}
-    for any $c, a_0$. To do this we show eacch of 
+    for any $c, a_0$. To do this we show each of 
     \begin{equation}\label{leq}
         g(c, a_0) \leq \bigsqcup_{b \in B} g\circ f(c, b)\wedge f(a_0, b)
     \end{equation}
@@ -57,20 +57,25 @@
     \begin{equation}\label{geq}
         g(c, a_0) \geq \bigsqcup_{b \in B} g\circ f(c, b)\wedge f(a_0, b)
     \end{equation}
-    For \eqref{leq}, first observe
+    For \eqref{leq}:
     \begin{equation}\label{w}
-        g(c, a_0) \leq \lb a_0 = a_0 \rb \leq \bigsqcup_{b\in B} f(a_0, b)
+        g(c, a_0) = g(c, a_0) \wedge \lb a_0 = a_0 \rb 
     \end{equation}
-    we can therefore chose $b \in B$ with 
-    \begin{equation}\label{wv}
-        g(c, a_0) \leq \lb a_0 = a_0 \rb \leq f(a_0, b)
+    \begin{equation}\label{w}
+        = \bigsqcup_{b \in B} g(c, a_0) \wedge f(a_0, b) 
     \end{equation}
-    \eqref{wv} implies $g(c, a_0) \leq g(c, a_0) \wedge f(a_0, b)$
-    which in turn implies 
-    \begin{equation}
-        g(c, a_0) \leq (\bigsqcup_{a \in A} g(c, a) \wedge f(a, b)) \wedge f(a_0, b)
+    \begin{equation}\label{w}
+        = \bigsqcup_{b \in B} (\bigsqcup_{a \in A} g(c, a) \wedge f(a, b)) 
+        \wedge 
+        f(a_0, b)) \wedge g(c, a_0)
     \end{equation}
-    from which \eqref{leq} follows trivially.
+    \begin{equation}\label{w}
+        = \bigsqcup_{b \in B} f \circ g(c,b) 
+        \wedge 
+        f(a_0, b) \wedge g(c, a_0)
+    \end{equation}
+    which latter is what we want.
+    
 
     For \eqref{geq}, let $b \in B$. We have:
     \begin{equation}\label{t1}
