@@ -136,6 +136,49 @@
     \begin{equation}\label{help2}
         \bigsqcup_{d \in D} \lb Ed \rb \wedge f(a, d) \wedge  f(a, d) \Leftrightarrow p = \bigsqcup_{d \in D} \lb Ed \rb \wedge f(a, d) \wedge p 
     \end{equation}
-    but putting \eqref{help1} and \eqref{help2} together implies \eqref{target} by vii on p 277. 
+    but putting \eqref{help1} and \eqref{help2} together implies \eqref{target} by v and vii on p 277. 
+
+    To show uniqueness, we need to show that 
+    \begin{equation}\label{hyp}
+        \lb Ea \rb \wedge p = \bigsqcup_{d \in D} f(a, d) \wedge g(d, p)
+    \end{equation}
+    implies 
+    \begin{equation}\label{target1}
+        g(d, p) = \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p 
+    \end{equation}
+    i.e.
+    \begin{equation}\label{target2}
+        g(d, p) \leq \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p 
+    \end{equation}
+    and 
+    \begin{equation}\label{target3}
+        g(d, p) \leq \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p 
+    \end{equation}
+    For the first, 277 gives $g(d, p) \leq \lb Ed \rb$, so we must show $g(d,p) \leq \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p$.
+    For this, it is enough to show
+    \begin{equation}\label{target4}
+        g(d,p) \wedge \bigsqcup_{a' \in A} f(a', d) \leq p 
+    \end{equation}
+    \begin{equation}\label{target5}
+        g(d,p) \wedge p \leq \bigsqcup_{a' \in A} f(a', d).
+    \end{equation}
+    For \eqref{target4} we want 
+    \begin{equation}\label{target6}
+         \bigsqcup_{a' \in A} f(a', d) \wedge g(d, p) \leq p 
+    \end{equation}
+    now for a particular value of $a'$, \eqref{hyp} implies $f(a', d) \wedge g(d, p) \leq \lb Ea \rb \wedge p$.
+    So by the def of least upper bound, $\bigsqcup_{a' \in A} f(a', d) \wedge g(d, p) \leq \lb Ea \rb \wedge p$. But
+    then the result follows trivially.
+
+    For \eqref{target5}, we have 
+    \[
+        g(d,p) \wedge p \wedge \bigsqcup_{a' \in A} f(a', d) =  g(d,p) \wedge p \wedge \bigsqcup_{a' \in A} f(a', d) \wedge g(d, p)
+    \]
+    thus by \eqref{target6}
+    \[
+        g(d,p) \wedge p \wedge \bigsqcup_{a' \in A} f(a', d) \wedge g(d, p) = g(d,p) \wedge p \wedge p = g(d,p) \wedge p
+    \]
+    and the result follows.
+    
 \end{proof}
 \end{document}
