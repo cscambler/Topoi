@@ -5,6 +5,10 @@
 
 
 \newcommand{\Z}{\mathbf{Z}}
+\newcommand{\A}{\mathbf{A}}
+\newcommand{\D}{\mathbf{D}}
+\newcommand{\Om}{\Omega}
+\newcommand{\bO}{\mathbf{\Omega}}
 \newcommand{\N}{\mathbf{N}}
 \newcommand{\Q}{\mathbf{Q}}
 \newcommand{\lb}{\llbracket}
@@ -95,5 +99,43 @@
     $c$ and $b$. Then for any $a$, $\bigsqcup_{b \in B} g\circ f(c, b) \wedge f(a, b) = \bigsqcup_{b \in B} h\circ f(c, b) \wedge f(a, b)$.
     Hence $g(c, a) = f(c, a)$ by (2).
 \end{proof}
+\newpage
+\begin{ex}[$\Omega$ axiom in $\Omega$-set]
+    . 
+    Show that with $\bO(p,q) := p \Leftrightarrow q$
+    and $\top(0, p) = p$ we get the $\Om$ axiom for 
+    \begin{equation}\label{chi}
+        \chi_f = \lb Ed \rb \wedge \lb s_f(d) = p \rb_\bO
+    \end{equation} 
+\end{ex}
+\begin{proof}
+    Let $f : \A \to \D$ be monic.
+    First, it will be handy to have some identities. Note that
+    \begin{equation}\label{id1}
+        \top \circ ! (a, 0) = \bigsqcup_{x \in 1}  \lb Ea \rb \wedge p = \lb Ea \rb \wedge p
+    \end{equation}
+    Second, since $s_f(d) = \bigsqcup_{a \in A} f(a, d)$ \eqref{chi} implies
+    \begin{equation}\label{help}
+        \chi_f(d, p)  = \bigsqcup_{a \in A} f(a, d) \Leftrightarrow p
+    \end{equation}
+    which then implies
+    \begin{equation}\label{id2}
+        \chi_f \circ f(a, p)  = \bigsqcup_{d \in D} f(a, d) \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p
+    \end{equation}
+    putting \eqref{id1}, \eqref{id2} together, it suffices show 
+    \begin{equation}\label{target}
+        \lb Ea \rb \wedge p = \bigsqcup_{d \in D} f(a, d) \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p
+    \end{equation}
+    to show the square commutes.
 
+    It is immediate that 
+    \begin{equation}\label{help1}
+        \bigsqcup_{d \in D} f(a, d) \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p = \bigsqcup_{d \in D} f(a, d) \wedge f(a, d) \Leftrightarrow p
+    \end{equation}
+    by algebra (lol) we get 
+    \begin{equation}\label{help2}
+        \bigsqcup_{d \in D} f(a, d) \wedge f(a, d) \Leftrightarrow p = \bigsqcup_{d \in D} f(a, d) \wedge p 
+    \end{equation}
+    but putting \eqref{help1} and \eqref{help2} together implies \eqref{target} by vii on p 277. 
+\end{proof}
 \end{document}
