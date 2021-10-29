@@ -152,7 +152,7 @@
     \end{equation}
     and 
     \begin{equation}\label{target3}
-        g(d, p) \leq \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p 
+        g(d, p) \geq \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p 
     \end{equation}
     For the first, 277 gives $g(d, p) \leq \lb Ed \rb$, so we must show $g(d,p) \leq \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p$.
     For this, it is enough to show
@@ -178,7 +178,11 @@
     \[
         g(d,p) \wedge p \wedge \bigsqcup_{a' \in A} f(a', d) \wedge g(d, p) = g(d,p) \wedge p \wedge p = g(d,p) \wedge p
     \]
-    and the result follows.
-    
+    and \eqref{target2} follows.
+
+    For \eqref{target3}, consider
+    \begin{equation}
+        g(d, p) \wedge \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p 
+    \end{equation}
 \end{proof}
 \end{document}
