@@ -184,5 +184,36 @@
     \begin{equation}
         g(d, p) \wedge \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \Leftrightarrow p 
     \end{equation}
+    this equals 
+    \begin{equation}
+        \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \wedge g(d, p) \Leftrightarrow g(d, p) \wedge p 
+    \end{equation}
+    by \eqref{target5}, this is just
+    \begin{equation}
+        \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \wedge g(d, p) \Leftarrow g(d, p) \wedge p 
+    \end{equation}
+\end{proof}
+
+\begin{ex}[$h$ is continuous (5, p305)]
+
+    Show that the unique arrow $h$ derived from $x$ and $f$ in $Bn(I)$ 
+    is continuous in $Top(I)$.
+
+
+\end{ex}
+\begin{proof}
+    We need to show that whenever $h[X]$ is open for some $X \subseteq I \times \omega$, 
+    $X$ itself is open in that space. 
+    For each $n$, let $X_n$ = $\{ x : \langle x, n \rangle \in X\}$. 
+    Note $X = \bigcup_n X_n \times \{n\}$. It therefore suffices to prove that 
+    $X_n \times \{n\}$ is open for each $n$, which reduces to just showing $X_n$ is open
+    since $\omega$ has the discrete topology.
+
+    In case $n = 0$, note that $h[X_0 \times {0}] = x[X_0]$, using $h(i, 0) = x(i)$.
+    But if $x[X_0]$ is open, so is $X_0$, since $x$ is continuous.
+
+    In case $n = k + 1$, $h[X_n \times \{n\}] = f \circ h[X_k \times \{k\}]$
+    using $h(i, k + 1) = f(h(i, k))$. Then the result follows by the 
+    IH and continuity of $f$.
 \end{proof}
 \end{document}
