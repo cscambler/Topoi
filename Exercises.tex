@@ -193,6 +193,7 @@
         \lb Ed \rb \wedge \bigsqcup_{a' \in A} f(a', d) \wedge g(d, p) \Leftarrow g(d, p) \wedge p 
     \end{equation}
 \end{proof}
+\newpage
 
 \begin{ex}[$h$ is continuous (5, p305)]
 
@@ -203,9 +204,25 @@
 \end{ex}
 \begin{proof}
     We need to show that whenever $h[X]$ is open for some $X \subseteq I \times \omega$, 
-    $X$ itself is open in that space. 
-    For each $n$, let $X_n$ = $\{ x : \langle x, n \rangle \in X\}$. 
-    Note $X = \bigcup_n X_n \times \{n\}$. It therefore suffices to prove that 
-    $X_n \times \{n\}$ is open for each $n$, on assumption that $X$ is open.
+    $X$ itself is open in that space.
+
+    It is enough to prove that whenever $h[Y \times \{n\}]$ is open,
+    $Y \times \{n\}$ is open, since if $X$ is any other open
+    we can write it as a union of $Y \times \{n\}$s, and 
+    $h[\bigcup X] = \bigcup_{Z \in X} h[Z]$.
+
+    This we do by induction. In the base case, $h[Y \times \{0\}]$
+    is just $x[Y]$ (using $h(i, 0) = x(i)$).
+    Thus continuity of $x$ implies the result.
+
+    For the successor step, suppose \[ h[Y \times \{n+1\}]\] is open. 
+    This can be rewritten as \[ h \circ s [Y \times \{n\}]\] 
+    using $s(\langle i, n\rangle) = \langle i, n+1\rangle$. 
+    By def h, this in turn can be written as \[f \circ h [Y \times \{n\}].\] 
+    By the induction hypothesis and continuity of $f$, 
+    it follows that $Y \times \{n\}$ is open. Hence $Y$ is open, so $Y \times \{n+1\}$
+    is open too (the topology on $\omega$ is discrete).
+
+
 \end{proof}
 \end{document}
