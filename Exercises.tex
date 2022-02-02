@@ -206,14 +206,6 @@
     $X$ itself is open in that space. 
     For each $n$, let $X_n$ = $\{ x : \langle x, n \rangle \in X\}$. 
     Note $X = \bigcup_n X_n \times \{n\}$. It therefore suffices to prove that 
-    $X_n \times \{n\}$ is open for each $n$, which reduces to just showing $X_n$ is open
-    since $\omega$ has the discrete topology.
-
-    In case $n = 0$, note that $h[X_0 \times \{0\}] = x[X_0]$, using $h(i, 0) = x(i)$.
-    But if $x[X_0]$ is open, so is $X_0$, since $x$ is continuous.
-
-    In case $n = k + 1$, suppose $X_k$ is open for all $k < n$. Then since
-    $X_{n} \times \{n\} = s[X_k \times \{k\}]$, the result follows immediately from 
-    continuity of $s$.
+    $X_n \times \{n\}$ is open for each $n$, on assumption that $X$ is open.
 \end{proof}
 \end{document}
